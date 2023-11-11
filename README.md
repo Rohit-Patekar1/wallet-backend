@@ -21,15 +21,25 @@ Please use this url in your postman (https://api.postman.com/collections/1143632
 
 ### Initialize Wallet
 
-- **Endpoint**: `/setup`
+- **Endpoint**: `http://localhost:3000/api/setup`
 - **Method**: `POST`
 - **Description**: Set up a new wallet with an initial balance.
-- **Response Body**:
+- **Request Body**:
   ```json
   {
-    "name": "string",
-    "balance": "number"
+    "name":"High Level",
+    "balance":300
   }
+- **Response Body**
+  ```json
+  {
+    "id": "912998c9-fd84-45ec-be1d-9b0f5b1b9b04",
+    "balance": 300,
+    "transactionId": "c16cdf6e-0234-4d9c-89e5-ab91d2da6a82",
+    "name": "High Level",
+    "date": "2023-11-11T08:03:21.281Z",
+    "description": "Initial amount setup amount"
+}
 
 - **Endpoint**: `http://localhost:3000/api/wallet/0f4dc3a9-96f5-49c7-a94c-29007d8b0ae1`
 - **Method**: `GET`
@@ -104,5 +114,5 @@ Please use this url in your postman (https://api.postman.com/collections/1143632
             "description": "Deposit money",
             "type": "CREDIT",
             "transactionId": "8e64c9c5-4b6c-4d72-8c8b-14cb1cade5ee"
-        },]
+        }]
   }
