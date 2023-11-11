@@ -31,14 +31,18 @@ Please use this url in your postman (https://api.postman.com/collections/1143632
     "balance": "number"
   }
 
-- **Endpoint**: `/setup`
-- **Method**: `POST`
-- **Description**: Set up a new wallet with an initial balance.
+- **Endpoint**: `http://localhost:3000/api/wallet/0f4dc3a9-96f5-49c7-a94c-29007d8b0ae1`
+- **Method**: `GET`
+- **Description**: Get wallet details.
 - **Request Body**:
   ```json
   {
-    "name": "string",
-    "balance": "number"
+  "walletData": {
+        "_id": "654e736a0ccd0209c8f4b7a5",
+        "name": "HighLevel",
+        "createdAt": "2023-11-10T18:16:10.538Z",
+        "balance": 297.9999
+    }
   }
 
 - **Endpoint**: `/setup`
