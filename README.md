@@ -31,7 +31,7 @@ Please use this url in your postman (https://api.postman.com/collections/1143632
     "balance": "number"
   }
 
-  - **Endpoint**: `/setup`
+- **Endpoint**: `/setup`
 - **Method**: `POST`
 - **Description**: Set up a new wallet with an initial balance.
 - **Request Body**:
@@ -41,7 +41,7 @@ Please use this url in your postman (https://api.postman.com/collections/1143632
     "balance": "number"
   }
 
-  - **Endpoint**: `/setup`
+- **Endpoint**: `/setup`
 - **Method**: `POST`
 - **Description**: Set up a new wallet with an initial balance.
 - **Request Body**:
@@ -51,7 +51,17 @@ Please use this url in your postman (https://api.postman.com/collections/1143632
     "balance": "number"
   }
 
-  - **Endpoint**: `/setup`
+- **Endpoint**: `/setup`
+- **Method**: `POST`
+- **Description**: Set up a new wallet with an initial balance.
+- **Request Body**:
+  ```json
+  {
+    "name": "string",
+    "balance": "number"
+  }
+
+- **Endpoint**: `/setup`
 - **Method**: `POST`
 - **Description**: Set up a new wallet with an initial balance.
 - **Request Body**:
