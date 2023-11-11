@@ -42,6 +42,7 @@ Here is an overview of our transaction operation in the Node.js backend:
 
 ## Database Interaction Functions
 
+I have shown a working example of a Mongodb transactions in the video.
 In our application, we interact with MongoDB using the following functions to handle wallet transactions:
 
 ### `newTransaction(data: ITransaction, options = {})`
@@ -74,6 +75,50 @@ If an error occurs during the transaction, we catch the exception and perform th
 2. **Error Logging**: We log the error details for debugging purposes, which helps in identifying issues that might occur during the transaction process.
 
 3. **Error Response**: We format the error using a custom error handler and send a response back to the client with the appropriate HTTP status code and error message.
+
+## Non-Transactional Database Queries
+
+In addition to transactional operations, our wallet application also performs non-transactional database operations such as fetching transaction history and managing wallet data.
+
+### Fetching Transaction History
+
+The `fetchTransactions` function retrieves a paginated list of transactions for a particular wallet. It allows sorting and filtering based on the transaction amount or date.
+
+#### Function Details
+
+- **Purpose**: To fetch a list of all transactions for a specific wallet with support for pagination, sorting, and filtering.
+- **Parameters**:
+  - `id`: The unique identifier of the wallet.
+  - `skip`: The number of transactions to skip (for pagination).
+  - `limit`: The maximum number of transactions to return.
+  - `filter`: A string specifying the sorting order of the results.
+- **MongoDB Operations**:
+  - Uses an aggregation pipeline to match transactions by wallet ID.
+  - Applies sorting based on the filter criteria: transaction amount or date.
+  - Implements pagination using the `$skip` and `$limit` stages.
+  - Projects specific fields of transactions to be returned in the result.
+
+### Creation and Updation of Wallet
+
+We have two functions for managing wallets: `createWallet` for creating new wallets and `fetchWalletDetail` for retrieving details of an existing wallet.
+
+#### `createWallet(data: IWallet)`
+
+- **Purpose**: To create a new wallet with initial data.
+- **Parameters**:
+  - `data`: An object containing the initial wallet data such as name and balance.
+- **MongoDB Operations**:
+  - Inserts a new document into the `wallet` collection with the provided data.
+
+#### `fetchWalletDetail(id: String)`
+
+- **Purpose**: To fetch details of a specific wallet.
+- **Parameters**:
+  - `id`: The unique identifier of the wallet to fetch.
+- **MongoDB Operations**:
+  - Retrieves a single document from the `wallet` collection matching the provided wallet ID.
+  - Projects specific fields such as name, creation date, wallet ID, and balance to be returned in the result.
+
 
 
 
