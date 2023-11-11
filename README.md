@@ -8,8 +8,75 @@ Clone the git repository in your local machine
 After cloning is successful do npm i first then npm run build and finally npm start.
 With this step you should be able to run the project locally.
 
+## Database Design and Transactions
 
-End with an example of getting some data out of the system or using it for a little demo
+Our wallet application uses MongoDB as its NoSQL database, leveraging the flexible schema and high performance of MongoDB for handling wallet transactions and balances.
+
+### Transactions in MongoDB
+
+We use MongoDB transactions to ensure that operations on multiple collections are atomic. This means that changes are only permanent if all operations within the transaction are successful. If any operation fails, the transaction is aborted, and the database remains unchanged.
+
+### Transaction Operation Flow
+
+Here is an overview of our transaction operation in the Node.js backend:
+
+1. **Start a MongoDB Session:** 
+   We begin by initiating a new session and starting a transaction within that session.
+
+2. **Performing Operations:**
+   The transaction consists of several critical steps:
+   - **Fetch Wallet Data:** 
+     We retrieve the wallet details based on the `walletId` provided in the request parameters.
+   - **Validate Transactions:** 
+     Before proceeding, we ensure that the wallet exists and that a debit operation will not result in a negative balance.
+   - **Creating Transaction Entry:** 
+     We generate a new unique identifier for the transaction and calculate the new balance after the transaction.
+   - **Insert Transaction Record:** 
+     A new transaction record is inserted into the `transactions` collection with details such as wallet ID, date, amount, balance, and type (credit or debit).
+   - **Update Wallet Balance:** 
+     The wallet's balance is updated in the `wallet` collection to reflect the new balance after the transaction.
+
+3. **Commit or Abort Transaction:**
+   - If all operations are successful, we commit the transaction to make the changes permanent.
+   - If any operation fails, we catch the exception, abort the transaction, and revert all changes.
+
+## Database Interaction Functions
+
+In our application, we interact with MongoDB using the following functions to handle wallet transactions:
+
+### `newTransaction(data: ITransaction, options = {})`
+
+This function is responsible for inserting a new transaction record into the `transactions` collection. It uses the `insertOne` method, provided by the MongoDB driver, to add the new transaction document into the database.
+
+Parameters:
+- `data`: An object containing the transaction details such as wallet ID, date, amount, balance, description, and transaction type.
+- `options`: An optional parameter that includes the session object to execute this operation as part of the transaction.
+
+### `updateWallet(id: String, balance: number, options = {})`
+
+This function updates the balance of the specified wallet by wallet ID. It uses the `updateOne` method to modify the balance field of the wallet document in the `wallet` collection.
+
+Parameters:
+- `id`: The unique identifier of the wallet.
+- `balance`: The new balance to set for the wallet.
+- `options`: An optional parameter that includes the session object to execute this operation within the transaction.
+
+## Handling Errors and Rollbacks
+
+The application ensures data integrity and consistency by using MongoDB transactions. Here's how error handling is implemented:
+
+### Error Handling
+
+If an error occurs during the transaction, we catch the exception and perform the following steps:
+
+1. **Abort Transaction**: We call `session.abortTransaction()` to abort the ongoing transaction. This ensures that no partial changes are made to the database and the state remains consistent.
+
+2. **Error Logging**: We log the error details for debugging purposes, which helps in identifying issues that might occur during the transaction process.
+
+3. **Error Response**: We format the error using a custom error handler and send a response back to the client with the appropriate HTTP status code and error message.
+
+
+
 
 ## Deployed API Endpoints to run on POSTMAN
 
