@@ -39,7 +39,7 @@ Please use this url in your postman (https://api.postman.com/collections/1143632
     "name": "High Level",
     "date": "2023-11-11T08:03:21.281Z",
     "description": "Initial amount setup amount"
-}
+  }
 
 - **Endpoint**: `http://localhost:3000/api/wallet/0f4dc3a9-96f5-49c7-a94c-29007d8b0ae1`
 - **Method**: `GET`
