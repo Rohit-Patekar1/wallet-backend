@@ -1,4 +1,4 @@
-# Wallet App API Documentation
+# Wallet App API and Database Documentation
 
 This document provides an overview of the API endpoints for the Wallet App. The Wallet App allows users to manage their financial transactions and wallet balance.
 
