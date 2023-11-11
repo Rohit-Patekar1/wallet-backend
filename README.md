@@ -83,8 +83,8 @@ Please use this url in your postman (https://api.postman.com/collections/1143632
 - **Response Body**:
   ```json
   {
- "total": 6,
-    "transactions": [
+      "total": 2,
+      "transactions": [
         {
             "_id": "654f33730ccd0209c8f4b7ab",
             "walletId": "0f4dc3a9-96f5-49c7-a94c-29007d8b0ae1",
@@ -104,16 +104,5 @@ Please use this url in your postman (https://api.postman.com/collections/1143632
             "description": "Deposit money",
             "type": "CREDIT",
             "transactionId": "8e64c9c5-4b6c-4d72-8c8b-14cb1cade5ee"
-        },
-        {
-            "_id": "654f32200ccd0209c8f4b7a9",
-            "walletId": "0f4dc3a9-96f5-49c7-a94c-29007d8b0ae1",
-            "createdAt": "2023-11-11T07:49:52.641Z",
-            "amount": -20.1,
-            "balance": 257.7999,
-            "description": "Food",
-            "type": "DEBIT",
-            "transactionId": "84c18e80-0d64-49b2-97c8-2674cc0c72f5"
-        }
-      ]
+        },]
   }
