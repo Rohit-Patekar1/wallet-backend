@@ -24,7 +24,7 @@ Please use this url in your postman (https://api.postman.com/collections/1143632
 - **Endpoint**: `/setup`
 - **Method**: `POST`
 - **Description**: Set up a new wallet with an initial balance.
-- **Request Body**:
+- **Response Body**:
   ```json
   {
     "name": "string",
@@ -34,7 +34,7 @@ Please use this url in your postman (https://api.postman.com/collections/1143632
 - **Endpoint**: `http://localhost:3000/api/wallet/0f4dc3a9-96f5-49c7-a94c-29007d8b0ae1`
 - **Method**: `GET`
 - **Description**: Get wallet details.
-- **Request Body**:
+- **Response Body**:
   ```json
   {
   "walletData": {
@@ -45,14 +45,20 @@ Please use this url in your postman (https://api.postman.com/collections/1143632
     }
   }
 
-- **Endpoint**: `/setup`
+- **Endpoint**: `http://localhost:3000/api/transact/0f4dc3a9-96f5-49c7-a94c-29007d8b0ae1`
 - **Method**: `POST`
-- **Description**: Set up a new wallet with an initial balance.
+- **Description**: To do debit transaction
 - **Request Body**:
   ```json
   {
-    "name": "string",
-    "balance": "number"
+  "description":"Food",
+  "amount":-20.1
+  }
+- **Response Body**:
+  ```json
+  {
+    "balance": 257.7999,
+    "transactionId": "84c18e80-0d64-49b2-97c8-2674cc0c72f5"
   }
 
 - **Endpoint**: `/setup`
