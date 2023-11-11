@@ -47,7 +47,7 @@ Please use this url in your postman (https://api.postman.com/collections/1143632
 
 - **Endpoint**: `http://localhost:3000/api/transact/0f4dc3a9-96f5-49c7-a94c-29007d8b0ae1`
 - **Method**: `POST`
-- **Description**: To do debit transaction
+- **Description**: To do debit transactions. Negative amount indicates debit transaction
 - **Request Body**:
   ```json
   {
@@ -61,22 +61,59 @@ Please use this url in your postman (https://api.postman.com/collections/1143632
     "transactionId": "84c18e80-0d64-49b2-97c8-2674cc0c72f5"
   }
 
-- **Endpoint**: `/setup`
+- **Endpoint**: `http://localhost:3000/api/transact/0f4dc3a9-96f5-49c7-a94c-29007d8b0ae1`
 - **Method**: `POST`
-- **Description**: Set up a new wallet with an initial balance.
+- **Description**: To do credit transactions. Positive amount indicated credit transaction
 - **Request Body**:
   ```json
   {
-    "name": "string",
-    "balance": "number"
+    "description":"Deposit money",
+    "amount":20
+  }
+- **Response Body**:
+  ```json
+  {
+   "balance": 297.7999,
+   "transactionId": "d37ff760-5d67-4c8b-af22-99b190285ba8"
   }
 
-- **Endpoint**: `/setup`
-- **Method**: `POST`
-- **Description**: Set up a new wallet with an initial balance.
-- **Request Body**:
+- **Endpoint**: `http://localhost:3000/api/transactions?walletId=0f4dc3a9-96f5-49c7-a94c-29007d8b0ae1&skip=0&limit=10&filter=date_earliest`
+- **Method**: `GET`
+- **Description**: Fetch transaction
+- **Response Body**:
   ```json
   {
-    "name": "string",
-    "balance": "number"
+ "total": 6,
+    "transactions": [
+        {
+            "_id": "654f33730ccd0209c8f4b7ab",
+            "walletId": "0f4dc3a9-96f5-49c7-a94c-29007d8b0ae1",
+            "createdAt": "2023-11-11T07:55:31.683Z",
+            "amount": 20,
+            "balance": 297.7999,
+            "description": "Deposit money",
+            "type": "CREDIT",
+            "transactionId": "d37ff760-5d67-4c8b-af22-99b190285ba8"
+        },
+        {
+            "_id": "654f334c0ccd0209c8f4b7aa",
+            "walletId": "0f4dc3a9-96f5-49c7-a94c-29007d8b0ae1",
+            "createdAt": "2023-11-11T07:54:52.938Z",
+            "amount": 20,
+            "balance": 277.7999,
+            "description": "Deposit money",
+            "type": "CREDIT",
+            "transactionId": "8e64c9c5-4b6c-4d72-8c8b-14cb1cade5ee"
+        },
+        {
+            "_id": "654f32200ccd0209c8f4b7a9",
+            "walletId": "0f4dc3a9-96f5-49c7-a94c-29007d8b0ae1",
+            "createdAt": "2023-11-11T07:49:52.641Z",
+            "amount": -20.1,
+            "balance": 257.7999,
+            "description": "Food",
+            "type": "DEBIT",
+            "transactionId": "84c18e80-0d64-49b2-97c8-2674cc0c72f5"
+        }
+      ]
   }
