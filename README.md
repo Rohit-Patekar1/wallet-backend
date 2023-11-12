@@ -5,6 +5,7 @@ This document provides an overview of the API endpoints for the Wallet App. The 
 ## Getting Started
 
 Clone the git repository in your local machine
+create a `.env` file at root and include `MONGO_URL=mongodb+srv://rohitpatekar936:Rohit1215@cluster0.yldq7rh.mongodb.net/?retryWrites=true&w=majority` this in it
 After cloning is successful do `npm i` first then `npm run build` and finally `npm start`.
 With this step you should be able to run the project locally.
 
