@@ -12,6 +12,8 @@ With this step you should be able to run the project locally.
 
 ## Database Design and Transactions
 
+Loom video link. MongoDB transaction example and implementation have been shown in the video `https://www.loom.com/share/8273d504b1864354ab0b835fdbcd725e`. 
+
 Our wallet application uses MongoDB as its NoSQL database, leveraging the flexible schema and high performance of MongoDB for handling wallet transactions and balances.
 
 ### Transactions in MongoDB
